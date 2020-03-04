@@ -52,6 +52,7 @@ function pullMessages(subscription) {
   };
 
   if (!receivedMessages) {
+    console.log('No messages received');
     return [];
   }
 

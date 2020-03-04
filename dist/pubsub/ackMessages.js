@@ -8,7 +8,7 @@ import pubsubRequest from './pubsubRequest';
  * @param {Array} ackIds
  */
 function ackMessages(subscription, ackIds) {
-  if (R.empty(ackIds)) {
+  if (R.isEmpty(ackIds)) {
     return;
   }
 
@@ -17,8 +17,10 @@ function ackMessages(subscription, ackIds) {
     { ackIds }
   );
 
-  if (!R.empty(content)) {
-    const msg = `Response with error: ${content}`;
+  const data = JSON.parse(content);
+
+  if (!R.isEmpty(data)) {
+    const msg = `ackMessages response error: ${content}`;
     throw new Error(msg);
   }
 
