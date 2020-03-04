@@ -46,9 +46,14 @@ function pullMessages(subscription) {
 
   const decode = (message) => {
     const buffer = Utilities.base64Decode(message.data, Utilities.Charset.UTF_8);
-    const data = Utilities.newBlob(buffer).getDataAsString();
+    const string = Utilities.newBlob(buffer).getDataAsString();
+    const data = JSON.parse(string);
     return { ...message, data };
   };
+
+  if (!receivedMessages) {
+    return [];
+  }
 
   console.log('Pull %s messages successfull', receivedMessages.length);
 
