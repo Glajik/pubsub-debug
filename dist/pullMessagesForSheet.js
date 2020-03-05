@@ -66,6 +66,9 @@ function pullMessagesForSheet(sheet) {
   const numColumns = 6;
   sheet.getRange(row, col, numRows, numColumns).setValues(values);
 
+  // Sort by publishTime
+  sheet.sort(2);
+
   // Ack messages by ackId
   const ackIds = receivedMessages.map(R.prop('ackId'));
   ackMessages(subscription, ackIds);

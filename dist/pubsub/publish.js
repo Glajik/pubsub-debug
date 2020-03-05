@@ -35,9 +35,7 @@ function publish(topic, messages) {
 
   const { messageIds } = JSON.parse(content);
 
-  console.log('Publish success');
-  console.log('messageIds');
-  console.log(messageIds);
+  console.log('Publish of %s messages success', messageIds.length);
 
   return messageIds;
 }
